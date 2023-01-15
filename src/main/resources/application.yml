@@ -1,0 +1,35 @@
+db:
+  host: ${LIBRARY_DB_HOST:localhost}
+  port: ${LIBRARY_DB_PORT:5432}
+  name: ${LIBRARY_DB_NAME:library}
+  user: ${LIBRARY_DB_USER:library}
+  pass: ${LIBRARY_DB_PASS:library}
+
+logging:
+  level:
+    root: INFO
+    dev.akif.library: TRACE
+
+server:
+  error:
+    include-message: always
+    whitelabel:
+      enabled: false
+
+  port: ${LIBRARY_PORT:8080}
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${db.host}:${db.port}/${db.name}
+    username: ${db.user}
+    password: ${db.pass}
+
+  flyway:
+    url: jdbc:postgresql://${db.host}:${db.port}/${db.name}
+    user: ${db.user}
+    password: ${db.pass}
+
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+    try-it-out-enabled: true
