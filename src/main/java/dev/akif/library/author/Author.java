@@ -1,6 +1,6 @@
-package dev.akif.library.author.model;
+package dev.akif.library.author;
 
-import dev.akif.crud.BaseModel;
+import dev.akif.crud.CRUDModel;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -8,10 +8,11 @@ import java.util.UUID;
 
 public record Author(
         UUID id,
+        String name,
+        LocalDate birthDate,
         int version,
         Instant createdAt,
         Instant updatedAt,
-        String name,
-        LocalDate birthDate
-) implements BaseModel<UUID> {
+        Instant deletedAt
+) implements CRUDModel<UUID> {
 }

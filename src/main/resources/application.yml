@@ -8,7 +8,7 @@ db:
 logging:
   level:
     root: INFO
-    dev.akif.library: TRACE
+    dev.akif: TRACE
 
 server:
   error:
@@ -28,6 +28,9 @@ spring:
     url: jdbc:postgresql://${db.host}:${db.port}/${db.name}
     user: ${db.user}
     password: ${db.pass}
+
+  jpa:
+    show-sql: true
 
 springdoc:
   swagger-ui:

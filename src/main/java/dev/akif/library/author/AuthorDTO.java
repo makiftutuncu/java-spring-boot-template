@@ -1,6 +1,6 @@
-package dev.akif.library.author.dto;
+package dev.akif.library.author;
 
-import dev.akif.crud.BaseDTO;
+import dev.akif.crud.CRUDDTO;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -10,9 +10,9 @@ import java.util.UUID;
 
 public record AuthorDTO(
         @NotNull UUID id,
-        @NotNull Instant createdAt,
-        @NotNull Instant updatedAt,
         @NotBlank String name,
-        @NotNull LocalDate birthDate
-) implements BaseDTO<UUID> {
+        @NotNull LocalDate birthDate,
+        @NotNull Instant createdAt,
+        @NotNull Instant updatedAt
+) implements CRUDDTO<UUID> {
 }
