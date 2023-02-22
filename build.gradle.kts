@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
     java
     idea
@@ -28,7 +30,7 @@ repositories {
     mavenCentral()
 }
 
-val springBootCrudVersion = "0.3.1"
+val springBootCrudVersion = "0.3.2"
 val springdocOpenApiVersion = "2.0.2"
 
 dependencies {
@@ -42,7 +44,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.projectlombok:lombok")
-    implementation("dev.akif:spring-boot-crud-test:$springBootCrudVersion")
+    testImplementation("dev.akif:spring-boot-crud-test:$springBootCrudVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
@@ -56,4 +58,14 @@ dependencyManagement {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    testLogging {
+        events = setOf(
+            TestLogEvent.PASSED,
+            TestLogEvent.SKIPPED,
+            TestLogEvent.FAILED
+        )
+        showCauses = true
+        showExceptions = true
+        showStackTraces = true
+    }
 }

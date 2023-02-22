@@ -42,7 +42,7 @@ public class SimpleAuthorMapper implements SimpleMapper<UUID, SimpleAuthorEntity
     }
 
     @Override
-    public void updateEntityWith(final SimpleAuthor author, final SimpleAuthorEntity authorEntity) {
+    public void updateEntityWith(final SimpleAuthorEntity authorEntity, final SimpleAuthor author) {
         authorEntity.setName(author.name());
         authorEntity.setBirthDate(author.birthDate());
     }
