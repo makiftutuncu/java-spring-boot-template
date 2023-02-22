@@ -43,7 +43,7 @@ public class AuthorMapper implements CRUDMapper<UUID, AuthorEntity, Author, Crea
     }
 
     @Override
-    public void updateEntityWith(final UpdateAuthor updateAuthor, final AuthorEntity authorEntity) {
+    public void updateEntityWith(final AuthorEntity authorEntity, final UpdateAuthor updateAuthor) {
         authorEntity.setName(updateAuthor.name());
         authorEntity.setBirthDate(updateAuthor.birthDate());
     }

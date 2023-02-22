@@ -1,5 +1,6 @@
 package dev.akif.library;
 
+import dev.akif.crud.common.InstantProvider;
 import dev.akif.crud.error.CRUDErrorHandler;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -10,8 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import java.time.Clock;
 
 @EnableJpaAuditing
 @OpenAPIDefinition(
@@ -33,8 +32,8 @@ import java.time.Clock;
 @SpringBootApplication
 public class Main implements CRUDErrorHandler {
     @Bean
-    public Clock clock() {
-        return Clock.systemUTC();
+    public InstantProvider instantProvider() {
+        return InstantProvider.getUtc();
     }
 
     public static void main(String[] args) {
