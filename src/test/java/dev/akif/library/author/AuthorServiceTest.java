@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import java.util.UUID;
 
 @DisplayName("AuthorService")
-class AuthorServiceTest extends CRUDServiceTest<UUID, AuthorEntity, Author, CreateAuthor, UpdateAuthor, AuthorMapper, AuthorService, AuthorTestData> {
+class AuthorServiceTest extends CRUDServiceTest<UUID, AuthorEntity, Author, CreateAuthor, UpdateAuthor, AuthorMapper, AuthorRepository, AuthorService, AuthorTestData> {
     public AuthorServiceTest() {
         super(
                 "Author",
