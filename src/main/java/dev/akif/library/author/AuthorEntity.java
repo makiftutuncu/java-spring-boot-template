@@ -16,7 +16,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "authors")
 @ToString(callSuper = true)
-public class AuthorEntity extends CRUDEntity<UUID, AuthorEntity> {
+public class AuthorEntity extends CRUDEntity<UUID> {
     private String name;
     private LocalDate birthDate;
 
