@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-@RequestMapping("/v1/authors")
+@RequestMapping("/authors")
 @RestController
 @Tag(name = "Authors", description = "CRUD operations for author entities")
 public class AuthorController extends CRUDController<
@@ -21,6 +21,7 @@ public class AuthorController extends CRUDController<
         UpdateAuthorDTO,
         AuthorMapper,
         AuthorMapper,
+        AuthorRepository,
         AuthorService> {
     public AuthorController(final AuthorService service, final AuthorMapper mapper) {
         super("Author", service, mapper);

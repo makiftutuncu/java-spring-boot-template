@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-@RequestMapping("/v1/simpler/authors")
+@RequestMapping("/simpler/authors")
 @RestController
 @Tag(name = "Simpler Authors", description = "Simpler CRUD operations for author entities")
 public class SimplerAuthorController extends SimplerController<
@@ -15,6 +15,7 @@ public class SimplerAuthorController extends SimplerController<
         SimplerAuthorEntity,
         SimplerAuthor,
         SimplerAuthorMapper,
+        SimplerAuthorRepository,
         SimplerAuthorService> {
     public SimplerAuthorController(final SimplerAuthorService service, final SimplerAuthorMapper mapper) {
         super("SimplerAuthor", service, mapper);

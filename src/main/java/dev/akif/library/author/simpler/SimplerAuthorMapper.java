@@ -9,21 +9,6 @@ import java.util.UUID;
 @Component
 public class SimplerAuthorMapper implements SimplerMapper<UUID, SimplerAuthorEntity, SimplerAuthor> {
     @Override
-    public SimplerAuthor modelToDTO(final SimplerAuthor author) {
-        return author;
-    }
-
-    @Override
-    public SimplerAuthor createDTOToCreateModel(final SimplerAuthor author) {
-        return new SimplerAuthor(null, author.name(), author.birthDate(), 0, null, null, null);
-    }
-
-    @Override
-    public SimplerAuthor updateDTOToUpdateModel(final SimplerAuthor author) {
-        return new SimplerAuthor(null, author.name(), author.birthDate(), 0, null, null, null);
-    }
-
-    @Override
     public SimplerAuthorEntity entityToBeCreatedFrom(final SimplerAuthor author, final Instant now) {
         return new SimplerAuthorEntity(author.name(), author.birthDate(), now);
     }

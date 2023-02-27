@@ -16,7 +16,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "authors")
 @ToString(callSuper = true)
-public class SimpleAuthorEntity extends SimpleEntity<UUID, SimpleAuthorEntity> {
+public class SimpleAuthorEntity extends SimpleEntity<UUID> {
     private String name;
     private LocalDate birthDate;
 
