@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.UUID;
 
-public class AuthorTestData extends CRUDTestData<UUID, AuthorEntity, Author, CreateAuthor, UpdateAuthor> {
+public class AuthorTestData extends CRUDTestData<UUID, AuthorEntity, Author, CreateAuthor, UpdateAuthor, AuthorTestData> {
     public final LocalDate today = LocalDate.ofInstant(getNow(), ZoneOffset.UTC);
 
     public final AuthorEntity authorEntity1 = new AuthorEntity(
@@ -38,6 +38,10 @@ public class AuthorTestData extends CRUDTestData<UUID, AuthorEntity, Author, Cre
             getNow().plusSeconds(2),
             null
     );
+
+    public AuthorTestData() {
+        super("Author");
+    }
 
     @Override
     public AuthorEntity getTestEntity1() {
