@@ -1,6 +1,5 @@
 package dev.akif.library.author;
 
-import dev.akif.crud.CRUDRepository;
 import dev.akif.crud.CRUDServiceTest;
 import org.junit.jupiter.api.DisplayName;
 
@@ -17,7 +16,7 @@ class AuthorServiceTest extends CRUDServiceTest<UUID, AuthorEntity, Author, Crea
     }
 
     @Override
-    protected AuthorService buildService(final CRUDRepository<UUID, AuthorEntity> repository, final AuthorMapper mapper) {
-        return new AuthorService(getTestData().getInstantProvider(), repository, mapper);
+    protected AuthorService buildService(final AuthorMapper mapper, final AuthorTestData testData) {
+        return new AuthorService(getTestData().getInstantProvider(), getTestData().getRepository(), mapper);
     }
 }

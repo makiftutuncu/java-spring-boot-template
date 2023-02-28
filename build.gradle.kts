@@ -28,9 +28,10 @@ idea {
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
-val springBootCrudVersion = "0.3.3"
+val springBootCrudVersion = "0.3.4"
 val springdocOpenApiVersion = "2.0.2"
 
 dependencies {
