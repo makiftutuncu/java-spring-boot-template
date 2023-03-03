@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "dev.akif"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0"
 
 java.sourceCompatibility = JavaVersion.VERSION_17
 
@@ -31,7 +31,7 @@ repositories {
     mavenLocal()
 }
 
-val springBootCrudVersion = "0.3.4"
+val springBootCrudVersion = "0.4.0"
 val springdocOpenApiVersion = "2.0.2"
 
 dependencies {
@@ -47,14 +47,6 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("dev.akif:spring-boot-crud-test:$springBootCrudVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.testcontainers:junit-jupiter")
-    testImplementation("org.testcontainers:postgresql")
-}
-
-dependencyManagement {
-    imports {
-        mavenBom("org.testcontainers:testcontainers-bom:1.17.6")
-    }
 }
 
 tasks.withType<Test> {

@@ -1,9 +1,9 @@
 db:
-  host: ${LIBRARY_DB_HOST:localhost}
-  port: ${LIBRARY_DB_PORT:5432}
-  name: ${LIBRARY_DB_NAME:library}
-  user: ${LIBRARY_DB_USER:library}
-  pass: ${LIBRARY_DB_PASS:library}
+  host: ${LIBRARY_API_DB_HOST:localhost}
+  port: ${LIBRARY_API_DB_PORT:5432}
+  name: ${LIBRARY_API_DB_NAME:library-api}
+  user: ${LIBRARY_API_DB_USER:library-api}
+  pass: ${LIBRARY_API_DB_PASS:library-api}
 
 logging:
   level:
@@ -16,7 +16,7 @@ server:
     whitelabel:
       enabled: false
 
-  port: ${LIBRARY_PORT:8080}
+  port: ${LIBRARY_API_PORT:8080}
 
 spring:
   datasource:
@@ -31,6 +31,7 @@ spring:
 
   jpa:
     show-sql: true
+    open-in-view: false
 
 springdoc:
   swagger-ui:

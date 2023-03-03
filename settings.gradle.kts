@@ -1,1 +1,1 @@
-rootProject.name = "java-spring-boot-template"
+rootProject.name = "library-api"
