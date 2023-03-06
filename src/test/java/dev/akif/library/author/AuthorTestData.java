@@ -7,15 +7,15 @@ import java.time.ZoneOffset;
 import java.util.UUID;
 
 public class AuthorTestData extends CRUDTestData<UUID, AuthorEntity, Author, CreateAuthor, UpdateAuthor, AuthorTestData> {
-    public final LocalDate today = LocalDate.ofInstant(getNow(), ZoneOffset.UTC);
+    public final LocalDate today = LocalDate.ofInstant(now(), ZoneOffset.UTC);
 
     public final AuthorEntity authorEntity1 = new AuthorEntity(
             UUID.randomUUID(),
             "Author 1",
             today,
             0,
-            getNow(),
-            getNow(),
+            now(),
+            now(),
             null
     );
 
@@ -24,8 +24,8 @@ public class AuthorTestData extends CRUDTestData<UUID, AuthorEntity, Author, Cre
             "Author 2",
             today.plusDays(1),
             0,
-            getNow().plusSeconds(1),
-            getNow().plusSeconds(1),
+            now().plusSeconds(1),
+            now().plusSeconds(1),
             null
     );
 
@@ -34,8 +34,8 @@ public class AuthorTestData extends CRUDTestData<UUID, AuthorEntity, Author, Cre
             "Author 3",
             today.plusDays(2),
             0,
-            getNow().plusSeconds(2),
-            getNow().plusSeconds(2),
+            now().plusSeconds(2),
+            now().plusSeconds(2),
             null
     );
 

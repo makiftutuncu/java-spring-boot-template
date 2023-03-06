@@ -1,24 +1,41 @@
 version: '3'
 
 services:
-  library-db:
-    container_name: library-db
-    image: postgres:15.1-alpine
+  library-api-db:
+    container_name: library-api-db
+    image: postgres:15.2-alpine
     ports:
-      - "${LIBRARY_DB_PORT:-5432}:5432"
+      - "${LIBRARY_API_DB_PORT:-5432}:5432"
     volumes:
-      - library-db:/var/lib/postgresql/data
+      - library-api-db:/var/lib/postgresql/data
     environment:
-      - "POSTGRES_USER=${LIBRARY_DB_USER:-library}"
-      - "POSTGRES_PASSWORD=${LIBRARY_DB_PASS:-library}"
-      - "POSTGRES_DB=${LIBRARY_DB_NAME:-library}"
+      - "POSTGRES_USER=${LIBRARY_API_DB_USER:-library-api}"
+      - "POSTGRES_PASSWORD=${LIBRARY_API_DB_PASS:-library-api}"
+      - "POSTGRES_DB=${LIBRARY_API_DB_NAME:-library-api}"
     networks:
-      - library-network
+      - library-api-network
+  library-api:
+    container_name: library-api
+    image: library-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${LIBRARY_API_PORT:-8080}:8080"
+    depends_on:
+      - library-api-db
+    networks:
+      - library-api-network
+    environment:
+      - "LIBRARY_API_DB_HOST=library-api-db"
+      - "LIBRARY_API_DB_NAME=${LIBRARY_API_DB_NAME:-library-api}"
+      - "LIBRARY_API_DB_USER=${LIBRARY_API_DB_USER:-library-api}"
+      - "LIBRARY_API_DB_PASSWORD=${LIBRARY_API_DB_PASSWORD:-library-api}"
 
 volumes:
-  library-db:
+  library-api-db:
     driver: local
 
 networks:
-  library-network:
+  library-api-network:
     driver: bridge
