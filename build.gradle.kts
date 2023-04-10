@@ -3,7 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 plugins {
     java
     idea
-    id("org.springframework.boot") version "3.0.4"
+    id("org.springframework.boot") version "3.0.5"
     id("io.spring.dependency-management") version "1.1.0"
 }
 
@@ -30,7 +30,7 @@ repositories {
     mavenLocal()
 }
 
-val springBootCrudVersion = "0.5.0-SNAPSHOT"
+val springBootCrudVersion = "0.5.0"
 val springdocOpenApiVersion = "2.0.2"
 
 dependencies {
