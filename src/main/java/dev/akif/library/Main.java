@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class Main implements CRUDErrorHandler {
     @Bean
     public InstantProvider instantProvider() {
-        return InstantProvider.getUtc();
+        return InstantProvider.utc;
     }
 
     public static void main(String[] args) {

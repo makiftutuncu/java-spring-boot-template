@@ -3,9 +3,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 plugins {
     java
     idea
-    id("org.springframework.boot") version "3.0.3"
+    id("org.springframework.boot") version "3.0.4"
     id("io.spring.dependency-management") version "1.1.0"
-    kotlin("plugin.lombok") version "1.8.0"
 }
 
 group = "dev.akif"
@@ -31,7 +30,7 @@ repositories {
     mavenLocal()
 }
 
-val springBootCrudVersion = "0.4.0"
+val springBootCrudVersion = "0.5.0-SNAPSHOT"
 val springdocOpenApiVersion = "2.0.2"
 
 dependencies {
