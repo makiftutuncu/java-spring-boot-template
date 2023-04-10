@@ -12,7 +12,7 @@
 
 ## Introduction
 
-Library API is a web backend application. It provides CRUD APIs to manage authors.
+Library API is a web backend application. It provides CRUD APIs to manage authors and books.
 
 It uses
 

@@ -1,11 +1,11 @@
-package dev.akif.library.author;
+package dev.akif.library.book;
 
 import dev.akif.crud.CRUDController;
 import dev.akif.crud.common.Paged;
 import dev.akif.crud.common.Parameters;
+import dev.akif.library.author.AuthorDTO;
 import dev.akif.library.authorbook.AuthorBookService;
-import dev.akif.library.authorbook.AuthorWithBooks;
-import dev.akif.library.book.BookDTO;
+import dev.akif.library.authorbook.BookWithAuthors;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -17,42 +17,41 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.UUID;
 
-@RequestMapping("/authors")
+@RequestMapping("/books")
 @RestController
-@Tag(name = "Authors", description = "CRUD operations for authors")
-public class AuthorController extends CRUDController<
-        UUID,
-        AuthorEntity,
-        AuthorWithBooks,
-        AuthorWithBooksDTO,
-        CreateAuthor,
-        UpdateAuthor,
-        CreateAuthorDTO,
-        UpdateAuthorDTO,
-        AuthorMapper,
-        AuthorDTOMapper,
-        AuthorRepository,
-        AuthorService> {
+@Tag(name = "Books", description = "CRUD operations for books")
+public class BookController extends CRUDController<
+        Long,
+        BookEntity,
+        BookWithAuthors,
+        BookWithAuthorsDTO,
+        CreateBook,
+        UpdateBook,
+        CreateBookDTO,
+        UpdateBookDTO,
+        BookMapper,
+        BookDTOMapper,
+        BookRepository,
+        BookService> {
     private final AuthorBookService authorBookService;
 
-    private static final String LIST_BOOKS_SUMMARY = "List books of author";
-    private static final String LIST_BOOKS_DESCRIPTION = "List books of author with given pagination.";
-    private static final String LIST_BOOKS_RESPONSE = "Books of author are returned successfully.";
+    private static final String LIST_AUTHORS_SUMMARY = "List authors of books";
+    private static final String LIST_AUTHORS_DESCRIPTION = "List authors of book with given pagination.";
+    private static final String LIST_AUTHORS_RESPONSE = "Authors of book are returned successfully.";
 
-    public AuthorController(final AuthorService service, final AuthorDTOMapper mapper, final AuthorBookService authorBookService) {
-        super("Author", service, mapper);
+    public BookController(final BookService service, final BookDTOMapper mapper, final AuthorBookService authorBookService) {
+        super("Book", service, mapper);
         this.authorBookService = authorBookService;
     }
 
-    @ApiResponse(responseCode = CODE_OK, description = LIST_BOOKS_RESPONSE)
-    @GetMapping(path = "/{id}/books", produces = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(summary = LIST_BOOKS_SUMMARY, description = LIST_BOOKS_DESCRIPTION)
-    public Paged<BookDTO> listBooksOfAuthor(
+    @ApiResponse(responseCode = CODE_OK, description = LIST_AUTHORS_RESPONSE)
+    @GetMapping(path = "/{id}/authors", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = LIST_AUTHORS_SUMMARY, description = LIST_AUTHORS_DESCRIPTION)
+    public Paged<AuthorDTO> listAuthorsOfBook(
             @Parameter(name = "id", in = ParameterIn.PATH, description = GET_ID_DESCRIPTION)
             @PathVariable("id")
-            final UUID authorId,
+            final long bookId,
             @Parameter(name = "page", description = PAGE_DESCRIPTION)
             @RequestParam(name = "page", required = false, defaultValue = "0")
             final int page,
@@ -68,7 +67,7 @@ public class AuthorController extends CRUDController<
         final var parameters = new Parameters(pathVariables, request);
         final var pageRequest = PageRequest.of(page, perPage);
         return authorBookService
-                .listBooksOfAuthor(authorId, pageRequest, parameters)
-                .map(b -> getMapper().bookToBookDTO(b));
+                .listAuthorsOfBook(bookId, pageRequest, parameters)
+                .map(a -> getMapper().authorToAuthorDTO(a));
     }
 }
