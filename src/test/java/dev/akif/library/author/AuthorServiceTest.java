@@ -15,4 +15,9 @@ class AuthorServiceTest extends CRUDServiceTest<UUID, AuthorEntity, AuthorWithBo
                 (mapper, testData) -> new AuthorService(testData.getInstantProvider(), AuthorTestHelper.INSTANCE.repository, mapper)
         );
     }
+
+    @Override
+    protected void resetData() {
+        AuthorTestHelper.INSTANCE.repository.reset();
+    }
 }
