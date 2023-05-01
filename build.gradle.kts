@@ -30,7 +30,7 @@ repositories {
     mavenLocal()
 }
 
-val springBootCrudVersion = "0.5.0"
+val springBootCrudVersion = "0.5.1"
 val springdocOpenApiVersion = "2.0.2"
 
 dependencies {
