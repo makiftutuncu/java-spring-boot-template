@@ -3,7 +3,7 @@ version: '3'
 services:
   library-api-db:
     container_name: library-api-db
-    image: postgres:15.3-alpine
+    image: postgres:17.0-alpine
     ports:
       - "${LIBRARY_API_DB_PORT:-5432}:5432"
     volumes:
