@@ -32,7 +32,7 @@ repositories {
 }
 
 val springBootCrudVersion = "0.5.1"
-val springdocOpenApiVersion = "2.1.0"
+val springdocOpenApiVersion = "3.1.1"
 
 dependencies {
     implementation("dev.akif:spring-boot-crud-api:$springBootCrudVersion")
